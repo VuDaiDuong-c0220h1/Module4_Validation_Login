@@ -23,6 +23,7 @@ public class UserController {
     @PostMapping("/")
     public ModelAndView checkValidation(@Valid @ModelAttribute("user") User user, BindingResult bindingResult){
         ModelAndView modelAndView;
+        user.validate(user, bindingResult);
         if (bindingResult.hasFieldErrors()){
             modelAndView = new ModelAndView("index");
         }else {
